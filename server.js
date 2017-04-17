@@ -1,3 +1,8 @@
+/*
+* server.js
+*/
+
+// require express and other modules
 var express = require('express'),
     app = express(),
     bodyParser = require('body-parser'),
@@ -5,7 +10,6 @@ var express = require('express'),
 
 // configure bodyParser (for receiving form data)
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
 
 // serve static files from public folder
 app.use(express.static(__dirname + '/public'));
@@ -13,19 +17,19 @@ app.use(express.static(__dirname + '/public'));
 // set view engine to hbs (handlebars)
 app.set('view engine', 'hbs');
 
-app.get('*', function(req, res){
-  res.render('index');
-});
-
-
-//routes
-
-
-
-
-
 // connect to mongodb
-mongoose.connect('mongodb://localhost/portfolio');
+mongoose.connect('mongodb://localhost/mean_sample');
+
+
+
+
+
+
+
+
+app.get('/*', function(req,res){
+  res.render("index");
+});
 
 // listen on port 3000
 app.listen(3000, function() {
